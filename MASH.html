@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>H4ck3er</title>
+    <script>
+        window.$ = window.jQuery = require('jquery');
+    </script>
+    <script src="hacker.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Source Code Pro', monospace;
+            font-size: 10pt;
+        }
+
+        #console {
+            display: inline;
+            overflow-wrap: break-word;
+        }
+
+        #cursor {
+            display: inline;
+        }
+
+        #cursor.hide {
+            display: none;
+        }
+    </style>
+    <link href="styles/atom-one-dark.css" rel="stylesheet">
+</head>
+<body class="hljs">
+<div id="console"></div><span id="cursor">|</span>
+</body>
+<script type='text/javascript'>
+
+    Typer.speed = 1;
+    Typer.typingPower = 4;
+    Typer.multikeyDelay = 400;
+
+    Typer.file = 'hacker.js';
+
+    $c = $("#console");
+    $cur = $('#cursor');
+
+    hl = require("highlight.js");
+
+    test = function () {
+        $c.html(hl.highlight("javascript", "for(var i=0;i<10;i++)alert(i);").value)
+    };
+
+    Typer.init();
+
+</script>
+</html>

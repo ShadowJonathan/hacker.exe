@@ -1,0 +1,14 @@
+{
+  "name"    : "hacker.exe",
+  "version" : "0.1.0",
+  "main"    : "main.js",
+  "dependencies": {
+    "electron": "^1.7.2",
+    "jquery": "^3.2.1",
+    "highlight.js": "^9.12.0"
+  },
+  "scripts": {
+    "start": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
