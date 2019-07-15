@@ -2,7 +2,6 @@ $(document).onload +=
     $(document).keydown(
         function (event) {
             for (i = 0; i < Typer.typingPower; i++) {
-                console.log(i);
                 setTimeout(function () {
                     Typer.addText(event)
                 }, (i - 1) * Typer.multikeyDelay); //Capture the keydown event and call the addText, this is executed on page load
@@ -27,7 +26,8 @@ var Typer = {
         }, 500); // inizialize timer for blinking cursor
         $.get(Typer.file, function (data) {// get the text file
             Typer.text = data;// save the textfile in Typer.text
-            Typer.hljstype = hl.highlightAuto(Typer.text).language
+            Typer.hljstype = hl.highlightAuto(Typer.text).language;
+            console.log(Typer.hljstype, Typer.text, hl.highlightAuto(Typer.text), hl.highlight(Typer.hljstype, Typer.text).value)
         });
     },
 
@@ -84,8 +84,9 @@ var Typer = {
                 if (Typer.index > 0) // else if index is not less than 0
                     Typer.index -= Typer.speed;//	remove speed for deleting text
             }
-            var text = $("<div/>").text(Typer.text.substring(0, Typer.index)).html();// parse the text for stripping html enities
-            text = hl.highlight(Typer.hljstype, text).value;
+            var htext = Typer.text.substring(0, Typer.index);// parse the text for stripping html enities
+            text = hl.highlight(Typer.hljstype, htext).value;
+            console.log(htext, hl.highlight(Typer.hljstype, text), text);
             var rtn = new RegExp("\n", "g"); // newline regex
             var rts = new RegExp("(\\s(?!class))", "g"); // whitespace regex
             var rtt = new RegExp("\\t", "g"); // tab regex
